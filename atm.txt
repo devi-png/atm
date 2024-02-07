@@ -1,0 +1,69 @@
+class ATM:
+      def __init__(self):
+          self.saldo = ()
+          self.transaksi = []
+        
+      def cek_saldo(self, saldo):
+          self.saldo = saldo
+          print("Saldo anda anda sebesar Rp.", self.saldo)
+        
+      def simpan_uang(self):
+          tambah_saldo = int(input("Masukkan jumlah uang yang ingin disimpan: "))
+          self.saldo = self.saldo + tambah_saldo
+          self.transaksi.append(tambah_saldo)
+          print("Uang berhasil disimpan. Saldo sekarang: Rp.",self.saldo)
+        
+      def ambil_uang(self):
+          tarik_saldo = int(input("Masukkan jumlah uang yang ingin ditarik: "))
+          if tarik_saldo > self.saldo:
+              print("Saldo tidak mencukupi")
+          else:
+              self.saldo = self.saldo - tarik_saldo
+              self.transaksi.append(tarik_saldo)
+              print("Uang berhasil ditarik. Saldo sekarang: Rp.", self.saldo)
+              
+      def cek_mutasi(self,transaksi):
+          print("History Transaksi:")
+          for transaksi in self.transaksi:
+            print(transaksi)
+      def keluar(self):
+          print("Terima kasih telah menggunakan ATM kami")
+while True:
+  print("Selamat datang di ATM")
+  p = int(input("Masukkan password: "))
+  if p == 1111:
+    print("Selamat datang di ATM")
+    print("Pilih transaksi yang anda inginkan")
+    atm = ATM()
+    saldo_awal = 100000
+    atm.saldo = saldo_awal
+    while True:
+      print("\nMenu ATM:")
+      print("1. Cek Saldo")
+      print("2. Simpan Uang")
+      print("3. Ambil Uang")
+      print("4. Cek Mutasi")
+      print("5. Keluar")
+
+      pilihan = input("Silahkan pilih (1,2,3,4,5):")
+
+      if pilihan == '1':
+        atm.cek_saldo(saldo_awal)
+      elif pilihan == '2':
+        atm.simpan_uang()
+      elif pilihan == '3':
+        atm.ambil_uang()
+      elif pilihan == '4':
+        atm.cek_mutasi(transaksi=None)
+      elif pilihan == '5':
+        atm.keluar()
+      else:
+          print("Pilihan tidak valid. Silahkan pilih 1, 2, 3, 4, atau 5.")
+  else:
+      print("Password salah. Silakan coba lagi")
+      print(input("Masukkan password: "))
+      kesempatan = 0
+      total_kesempatan = 3 
+      kesempatan += 1
+      while kesempatan > total_kesempatan:
+          print("PIN terblokir!!")
